@@ -1,16 +1,17 @@
-import express, { Application, NextFunction, Request, Response } from "express";
-import cors from "cors";
-const app: Application = express();
+import express, { Application, Request, Response } from 'express'
+import cors from 'cors'
+const app: Application = express()
 
-app.use(cors());
+app.use(cors())
 
 //parser
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 //handle not found
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  res.send("Server is running!");
-});
 
-export default app;
+app.get('/', (req: Request, res: Response) => {
+  res.send('Server is running!')
+})
+
+export default app
