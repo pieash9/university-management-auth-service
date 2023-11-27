@@ -1,0 +1,91 @@
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:13:05.190Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:15:45.811Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:16:23.864Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:17:45.179Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:18:57.746Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:19:51.307Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:23:21.163Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:23:51.507Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:40:32.374Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:47:00.579Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:48:54.586Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:56:37.488Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T09:57:44.092Z'
+}

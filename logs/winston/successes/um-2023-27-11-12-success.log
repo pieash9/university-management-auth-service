@@ -1,0 +1,14 @@
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T06:53:24.533Z'
+}
+{
+  message: '🛢 DB connected & listening on 5000',
+  level: 'info',
+  service: 'user-service',
+  label: 'UM!',
+  timestamp: '2023-11-27T06:59:48.176Z'
+}
