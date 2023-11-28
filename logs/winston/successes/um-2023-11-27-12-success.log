@@ -1,7 +1,0 @@
-{
-  message: '🛢 DB connected & listening on 5000',
-  level: 'info',
-  service: 'user-service',
-  label: 'UM!',
-  timestamp: '2023-11-27T06:51:56.155Z'
-}

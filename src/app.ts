@@ -1,6 +1,7 @@
-import express, { Application, NextFunction, Request, Response } from 'express'
+import express, { Application } from 'express'
 import cors from 'cors'
-import usersRouter from './app/modules/users/users.route'
+import globalErrorHandler from './app/middlewares/globalErrorHandler'
+import { UserRoutes } from './app/modules/users/user.route'
 const app: Application = express()
 
 app.use(cors())
@@ -10,35 +11,14 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // application routes
-app.use('/api/v1/users', usersRouter)
+app.use('/api/v1/users', UserRoutes)
 
-class ApiError extends Error {
-  statusCode: number
-
-  constructor(statusCode: number, message: string | undefined, stack = '') {
-    super(message)
-    this.statusCode = statusCode
-    if (stack) {
-      this.stack = stack
-    } else {
-      Error.captureStackTrace(this, this.constructor)
-    }
-  }
-}
-
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
-  // res.send('Server is running!')
-  throw new Error('Error ghotche!')
-  // next('Ore error')
+app.get('/', async () => {
+  // Promise.reject(new Error('Unhandled promise rejection'))
+  throw new Error('Unhandled error')
 })
 
 // global error handler
-app.use((err, req: Request, res: Response, next: NextFunction) => {
-  if (err instanceof Error) {
-    res.status(400).json({ error: err })
-  } else {
-    res.status(500).json({ error: 'Something went wrong!' })
-  }
-})
+app.use(globalErrorHandler)
 
 export default app
