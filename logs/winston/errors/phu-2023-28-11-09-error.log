@@ -1,0 +1,85 @@
+Tue Nov 28 2023 9:4:23 } [PH] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "role"
+    ],
+    "message": "role is required"
+  }
+]
+Tue Nov 28 2023 9:40:11 } [PH] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "role"
+    ],
+    "message": "role is required"
+  }
+]
+Tue Nov 28 2023 9:40:27 } [PH] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "role"
+    ],
+    "message": "role is required"
+  }
+]
+Tue Nov 28 2023 9:41:37 } [PH] error: 🚀 GlobalErrorHandler ~ Cannot set properties of undefined (setting 'id')
+Tue Nov 28 2023 9:42:16 } [PH] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "role"
+    ],
+    "message": "role is required"
+  }
+]
+Tue Nov 28 2023 9:42:17 } [PH] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "role"
+    ],
+    "message": "role is required"
+  }
+]
+Tue Nov 28 2023 9:42:22 } [PH] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "role"
+    ],
+    "message": "role is required"
+  }
+]
+Tue Nov 28 2023 9:42:24 } [PH] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "role"
+    ],
+    "message": "role is required"
+  }
+]

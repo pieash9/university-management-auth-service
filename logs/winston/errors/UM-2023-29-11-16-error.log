@@ -1,0 +1,66 @@
+Wed Nov 29 2023 16:15:53 } [UM] error: Failed to connect database Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
+Wed Nov 29 2023 16:19:30 } [UM] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "body",
+      "year"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+Wed Nov 29 2023 16:23:1 } [UM] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "expected": "'January' | 'February' | 'March' | 'April' | 'May' | 'June' | 'July' | 'August' | 'September' | 'October' | 'November' | 'December'",
+    "received": "undefined",
+    "code": "invalid_type",
+    "path": [
+      "body",
+      "startMonth"
+    ],
+    "message": "Start month is required !"
+  }
+]
+Wed Nov 29 2023 16:24:29 } [UM] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "received": "05",
+    "code": "invalid_enum_value",
+    "options": [
+      "01",
+      "02",
+      "03"
+    ],
+    "path": [
+      "body",
+      "code"
+    ],
+    "message": "Invalid enum value. Expected '01' | '02' | '03', received '05'"
+  }
+]
+Wed Nov 29 2023 16:25:7 } [UM] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "received": "Decemberr",
+    "code": "invalid_enum_value",
+    "options": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "path": [
+      "body",
+      "endMonth"
+    ],
+    "message": "Invalid enum value. Expected 'January' | 'February' | 'March' | 'April' | 'May' | 'June' | 'July' | 'August' | 'September' | 'October' | 'November' | 'December', received 'Decemberr'"
+  }
+]
