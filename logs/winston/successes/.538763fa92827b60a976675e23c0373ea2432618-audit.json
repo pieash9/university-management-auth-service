@@ -1,25 +1,25 @@
 {
-    "keep": {
-        "days": true,
-        "amount": 14
+  "keep": {
+    "days": true,
+    "amount": 14
+  },
+  "auditLog": "C:\\Dev\\Next-level-web\\university-management-auth-service\\logs\\winston\\successes\\.538763fa92827b60a976675e23c0373ea2432618-audit.json",
+  "files": [
+    {
+      "date": 1701139586848,
+      "name": "C:\\Dev\\Next-level-web\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-28-11-08-success.log",
+      "hash": "8a6aaf57dee055db164593fe0fb7c9581513cb264e87b9960573083c6d267db1"
     },
-    "auditLog": "C:\\Dev\\Next-level-web\\university-management-auth-service\\logs\\winston\\successes\\.538763fa92827b60a976675e23c0373ea2432618-audit.json",
-    "files": [
-        {
-            "date": 1701139586848,
-            "name": "C:\\Dev\\Next-level-web\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-28-11-08-success.log",
-            "hash": "8a6aaf57dee055db164593fe0fb7c9581513cb264e87b9960573083c6d267db1"
-        },
-        {
-            "date": 1701140546657,
-            "name": "C:\\Dev\\Next-level-web\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-28-11-09-success.log",
-            "hash": "c08a702440f890103cffcc294622e85ad9aed89acb5ca99d41a8077f487003cf"
-        },
-        {
-            "date": 1701153191883,
-            "name": "C:\\Dev\\Next-level-web\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-28-11-12-success.log",
-            "hash": "3a4f9a88d4e2b1ff99e4a84bb221abb87b127ca286df95c97c80625a746e65aa"
-        }
-    ],
-    "hashType": "sha256"
+    {
+      "date": 1701140546657,
+      "name": "C:\\Dev\\Next-level-web\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-28-11-09-success.log",
+      "hash": "c08a702440f890103cffcc294622e85ad9aed89acb5ca99d41a8077f487003cf"
+    },
+    {
+      "date": 1701153191883,
+      "name": "C:\\Dev\\Next-level-web\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-28-11-12-success.log",
+      "hash": "3a4f9a88d4e2b1ff99e4a84bb221abb87b127ca286df95c97c80625a746e65aa"
+    }
+  ],
+  "hashType": "sha256"
 }
