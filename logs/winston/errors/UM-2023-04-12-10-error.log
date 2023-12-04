@@ -1,0 +1,5 @@
+Mon Dec 04 2023 10:22:47 } [UM] error: Cast to ObjectId failed for value "656c4f59e04ee056dbd6f" (type string) at path "_id" for model "AcademicSemester"
+Mon Dec 04 2023 10:26:16 } [UM] error: Cast to ObjectId failed for value "656c4f59e04ee056dbd6f" (type string) at path "_id" for model "AcademicSemester"
+Mon Dec 04 2023 10:30:31 } [UM] error: Cast to ObjectId failed for value "656c4f59e04ee056dbd6f" (type string) at path "_id" for model "AcademicSemester"
+Mon Dec 04 2023 10:37:20 } [UM] error: Cast to ObjectId failed for value "656c4f59e04ee056dbd6f" (type string) at path "_id" for model "AcademicSemester"
+Mon Dec 04 2023 10:42:38 } [UM] error: Cast to ObjectId failed for value "656c4f59e04ee056dbd6f" (type string) at path "_id" for model "AcademicSemester"

@@ -1,0 +1,11 @@
+Mon Dec 04 2023 19:0:3 } [UM] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "custom",
+    "message": "Either both title and code should be provided or neither",
+    "path": []
+  }
+]
+Mon Dec 04 2023 19:3:53 } [UM] error: Invalid Semester code !
+Mon Dec 04 2023 19:6:14 } [UM] error: Invalid Semester code !
+Mon Dec 04 2023 19:7:24 } [UM] error: Invalid Semester code !
+Mon Dec 04 2023 19:9:4 } [UM] error: Invalid Semester code !

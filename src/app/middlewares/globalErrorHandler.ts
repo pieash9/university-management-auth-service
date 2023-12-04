@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
-import { ErrorRequestHandler } from "express";
+import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
 import config from "../../config";
 import { IGenericErrorMessage } from "../../interfaces/error";
 import handleValidationError from "../../errors/handleValidationError";
@@ -9,10 +11,16 @@ import { Error } from "mongoose";
 import { errorLogger } from "../../shared/logger";
 import { ZodError } from "zod";
 import handleZodError from "../../errors/handleZodError";
+import handleCastError from "../../errors/handleCastError";
 
-const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
+const globalErrorHandler: ErrorRequestHandler = (
+  error,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   config.env === "development"
-    ? console.log(`🚀 GlobalErrorHandler ~`, error)
+    ? console.log(`🐱‍🏍 globalErrorHandler ~~`, { error })
     : errorLogger.error(`🚀 GlobalErrorHandler ~`, error);
 
   let statusCode = 500;
@@ -29,6 +37,12 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessage;
+  } else if (error.name === "CastError") {
+    const simplifiedError = handleCastError(error);
+    statusCode = simplifiedError.statusCode;
+    message = simplifiedError.message;
+    errorMessages = simplifiedError.errorMessage;
+    res.status(200).json({ error });
   } else if (error instanceof ApiError) {
     statusCode = error?.statusCode;
     message = error?.message;
@@ -56,9 +70,8 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
     success: false,
     message,
     errorMessages,
-    stack: config.env !== "production" ? error?.message : undefined,
+    stack: config.env !== "production" ? error?.stack : undefined,
   });
-  next();
 };
 
 export default globalErrorHandler;
