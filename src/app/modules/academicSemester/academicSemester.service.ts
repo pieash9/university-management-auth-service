@@ -94,6 +94,7 @@ const getSingleSemester = async (
   const result = await AcademicSemester.findById(id);
   return result;
 };
+
 const updateSemester = async (
   id: string,
   payload: Partial<IAcademicSemester>,
