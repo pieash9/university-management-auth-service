@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1", routes);
 
 // app.get("/", async () => {
-//   // Promise.reject(new Error('Unhandled promise rejection'))
+// Promise.reject(new Error('Unhandled promise rejection'))
 //   throw new Error("Unhandled error");
 // });
 
