@@ -1,0 +1,4 @@
+Sat Dec 23 2023 19:50:10 } [UM] error: 🚀 GlobalErrorHandler ~ Unexpected token } in JSON at position 608
+Sat Dec 23 2023 19:53:37 } [UM] error: Cast to ObjectId failed for value "create-department" (type string) at path "_id" for model "ManagementDepartment"
+Sat Dec 23 2023 19:55:57 } [UM] error: Cast to ObjectId failed for value "create-department" (type string) at path "_id" for model "ManagementDepartment"
+Sat Dec 23 2023 19:56:59 } [UM] error: 🚀 GlobalErrorHandler ~ Unexpected token } in JSON at position 608

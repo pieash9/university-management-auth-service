@@ -1,0 +1,25 @@
+Sat Dec 23 2023 13:12:26 } [UM] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "undefined",
+    "path": [
+      "body",
+      "student"
+    ],
+    "message": "Required"
+  }
+]
+Sat Dec 23 2023 13:13:53 } [UM] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "undefined",
+    "path": [
+      "body",
+      "faculty"
+    ],
+    "message": "Required"
+  }
+]
+Sat Dec 23 2023 13:19:58 } [UM] error: Faculty not found !
