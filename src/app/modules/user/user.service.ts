@@ -16,6 +16,7 @@ import { IFaculty } from "../faculty/faculty.interface";
 import { Faculty } from "../faculty/faculty.model";
 import { IAdmin } from "../admin/admin.interface";
 import { Admin } from "../admin/admin.model";
+import { IAcademicSemester } from "../academicSemester/academicSemester.interface";
 
 const createStudent = async (
   student: IStudent,
@@ -37,7 +38,7 @@ const createStudent = async (
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
-    const id = await generateStudentId(academicSemester); // generate id
+    const id = await generateStudentId(academicSemester as IAcademicSemester); // generate id
     user.id = id;
     student.id = id;
 
