@@ -1,0 +1,23 @@
+Sat Dec 23 2023 12:6:16 } [UM] error: 🚀 GlobalErrorHandler ~ [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "undefined",
+    "path": [
+      "body",
+      "guardian"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "undefined",
+    "path": [
+      "body",
+      "localGuardian"
+    ],
+    "message": "Required"
+  }
+]
+Sat Dec 23 2023 12:7:44 } [UM] error: Cast to ObjectId failed for value "250100001" (type string) at path "_id" for model "Student"
