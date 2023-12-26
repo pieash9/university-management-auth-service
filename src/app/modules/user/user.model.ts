@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
-import bcrypt from "bcrypt";
-import { Schema, model } from "mongoose";
-import { IUser, UserModel } from "./user.interface";
-import config from "../../../config";
+import bcrypt from 'bcrypt';
+import { Schema, model } from 'mongoose';
+import { IUser, UserModel } from './user.interface';
+import config from '../../../config';
 
 const UserSchema = new Schema<IUser, UserModel>(
   {
@@ -11,9 +11,9 @@ const UserSchema = new Schema<IUser, UserModel>(
     password: { type: String, required: true, select: 0 },
     needsPasswordChange: { type: Boolean, default: true },
     passwordChangedAt: { type: Date },
-    student: { type: Schema.Types.ObjectId, ref: "Student" },
-    faculty: { type: Schema.Types.ObjectId, ref: "Faculty" },
-    admin: { type: Schema.Types.ObjectId, ref: "Admin" },
+    student: { type: Schema.Types.ObjectId, ref: 'Student' },
+    faculty: { type: Schema.Types.ObjectId, ref: 'Faculty' },
+    admin: { type: Schema.Types.ObjectId, ref: 'Admin' },
   },
   {
     timestamps: true,
@@ -43,7 +43,7 @@ UserSchema.statics.isUserExist = async function (
   id: string,
 ): Promise<Pick<
   IUser,
-  "id" | "password" | "needsPasswordChange" | "role"
+  'id' | 'password' | 'needsPasswordChange' | 'role'
 > | null> {
   return await User.findOne(
     { id },
@@ -58,13 +58,18 @@ UserSchema.statics.isPasswordMatch = async function (
   return await bcrypt.compareSync(givenPassword, savePassword);
 };
 
-UserSchema.pre("save", async function (next) {
+//  user.save() er khtre kaj krbe
+UserSchema.pre('save', async function (next) {
   const user = this;
   user.password = await bcrypt.hashSync(
     user.password,
     Number(config.bcrypt_salt_rounds),
   );
+
+  if (!user.needsPasswordChange) {
+    user.passwordChangedAt = new Date();
+  }
   next();
 });
 
-export const User = model<IUser, UserModel>("User", UserSchema);
+export const User = model<IUser, UserModel>('User', UserSchema);
