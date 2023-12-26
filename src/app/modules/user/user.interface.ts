@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import { Model, Types } from "mongoose";
-import { IStudent } from "../student/student.interface";
-import { IFaculty } from "../faculty/faculty.interface";
-import { IAdmin } from "../admin/admin.interface";
+import { Model, Types } from 'mongoose';
+import { IStudent } from '../student/student.interface';
+import { IFaculty } from '../faculty/faculty.interface';
+import { IAdmin } from '../admin/admin.interface';
 
 export type IUser = {
   id: string;
@@ -18,7 +18,7 @@ export type IUser = {
 export interface UserModel extends Model<IUser> {
   isUserExist(
     id: string,
-  ): Promise<Pick<IUser, "id" | "password" | "needsPasswordChange" | "role">>;
+  ): Promise<Pick<IUser, 'id' | 'password' | 'needsPasswordChange' | 'role'>>;
 
   isPasswordMatch(
     givenPassword: string,

@@ -1,7 +1,7 @@
-import { Model, Types } from "mongoose";
-import { IAcademicSemester } from "../academicSemester/academicSemester.interface";
-import { IAcademicFaculty } from "../academicFaculty/academicFaculty.interface";
-import { IAcademicDepartment } from "../academicDepartment/academicDepartment.interface";
+import { Model, Types } from 'mongoose';
+import { IAcademicSemester } from '../academicSemester/academicSemester.interface';
+import { IAcademicFaculty } from '../academicFaculty/academicFaculty.interface';
+import { IAcademicDepartment } from '../academicDepartment/academicDepartment.interface';
 
 export type UserName = {
   firstName: string;
@@ -29,12 +29,12 @@ export type LocalGuardian = {
 export type IStudent = {
   id: string;
   name: UserName; //embedded object
-  gender: "male" | "female";
+  gender: 'male' | 'female';
   dateOfBirth: string;
   email: string;
   contactNo: string;
   emergencyContactNo: string;
-  bloodGroup?: "A+" | "A-" | "B+" | "B-" | "AB+" | "AB-" | "O+" | "O-";
+  bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
   presentAddress: string;
   permanentAddress: string;
   guardian: Guardian; // embedded object

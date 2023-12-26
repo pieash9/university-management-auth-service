@@ -1,5 +1,5 @@
-import { Schema, Types, model } from "mongoose";
-import { FacultyModel, IFaculty } from "./faculty.interface";
+import { Schema, Types, model } from 'mongoose';
+import { FacultyModel, IFaculty } from './faculty.interface';
 
 const FacultySchema = new Schema<IFaculty, FacultyModel>(
   {
@@ -30,11 +30,11 @@ const FacultySchema = new Schema<IFaculty, FacultyModel>(
     },
     gender: {
       type: String,
-      enum: ["male", "female"],
+      enum: ['male', 'female'],
     },
     bloodGroup: {
       type: String,
-      enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
+      enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
     },
     email: {
       type: String,
@@ -60,7 +60,7 @@ const FacultySchema = new Schema<IFaculty, FacultyModel>(
     },
     academicDepartment: {
       type: Types.ObjectId,
-      ref: "AcademicDepartment",
+      ref: 'AcademicDepartment',
       required: true,
     },
     designation: {
@@ -73,7 +73,7 @@ const FacultySchema = new Schema<IFaculty, FacultyModel>(
     },
     academicFaculty: {
       type: Types.ObjectId,
-      ref: "AcademicFaculty",
+      ref: 'AcademicFaculty',
       required: true,
     },
   },
@@ -82,4 +82,4 @@ const FacultySchema = new Schema<IFaculty, FacultyModel>(
   },
 );
 
-export const Faculty = model<IFaculty, FacultyModel>("Faculty", FacultySchema);
+export const Faculty = model<IFaculty, FacultyModel>('Faculty', FacultySchema);

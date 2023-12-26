@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IPaginationOptions } from "../../../interfaces/pagination";
-import { IGenericResponse } from "../../../interfaces/common";
-import { PaginationHelpers } from "../../../helpers/paginationHelper";
-import { SortOrder } from "mongoose";
-import { IStudent, IStudentFilters } from "./student.interface";
-import { studentSearchableFields } from "./student.constant";
-import { Student } from "./student.model";
-import ApiError from "../../../errors/ApiError";
-import httpStatus from "http-status";
+import { IPaginationOptions } from '../../../interfaces/pagination';
+import { IGenericResponse } from '../../../interfaces/common';
+import { PaginationHelpers } from '../../../helpers/paginationHelper';
+import { SortOrder } from 'mongoose';
+import { IStudent, IStudentFilters } from './student.interface';
+import { studentSearchableFields } from './student.constant';
+import { Student } from './student.model';
+import ApiError from '../../../errors/ApiError';
+import httpStatus from 'http-status';
 
 const getAllStudents = async (
   filters: IStudentFilters,
@@ -20,7 +20,7 @@ const getAllStudents = async (
   if (searchTerm) {
     andConditions.push({
       $or: studentSearchableFields.map(field => ({
-        [field]: { $regex: searchTerm, $options: "i" },
+        [field]: { $regex: searchTerm, $options: 'i' },
       })),
     });
   }
@@ -46,9 +46,9 @@ const getAllStudents = async (
     andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await Student.find(whereConditions)
-    .populate("academicSemester")
-    .populate("academicDepartment")
-    .populate("academicFaculty")
+    .populate('academicSemester')
+    .populate('academicDepartment')
+    .populate('academicFaculty')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
@@ -66,9 +66,9 @@ const getAllStudents = async (
 
 const getSingleStudent = async (id: string): Promise<IStudent | null> => {
   const result = await Student.findById(id)
-    .populate("academicSemester")
-    .populate("academicDepartment")
-    .populate("academicFaculty");
+    .populate('academicSemester')
+    .populate('academicDepartment')
+    .populate('academicFaculty');
   return result;
 };
 
@@ -78,7 +78,7 @@ const updateStudent = async (
 ): Promise<IStudent | null> => {
   const isExist = await Student.findOne({ id });
   if (!isExist) {
-    throw new ApiError(httpStatus.NOT_FOUND, "Student not found!");
+    throw new ApiError(httpStatus.NOT_FOUND, 'Student not found!');
   }
 
   const { name, guardian, localGuardian, ...studentData } = payload;
@@ -114,9 +114,9 @@ const updateStudent = async (
 
 const deleteStudent = async (id: string): Promise<IStudent | null> => {
   const result = await Student.findByIdAndDelete(id)
-    .populate("academicSemester")
-    .populate("academicDepartment")
-    .populate("academicFaculty");
+    .populate('academicSemester')
+    .populate('academicDepartment')
+    .populate('academicFaculty');
   return result;
 };
 

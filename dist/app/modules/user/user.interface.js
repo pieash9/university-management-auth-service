@@ -1,5 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
 // export interface IUserMethods {
 //   isUserExist(id: string): Promise<Partial<IUser> | null>;
 //   isPasswordMatch(

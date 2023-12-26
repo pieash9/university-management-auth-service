@@ -1,15 +1,15 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 import {
   AcademicSemesterModel,
   IAcademicSemester,
-} from "./academicSemester.interface";
+} from './academicSemester.interface';
 import {
   academicSemesterCodes,
   academicSemesterMonths,
   academicSemesterTitles,
-} from "./academicSemester.constant";
-import ApiError from "../../../errors/ApiError";
-import httpStatus from "http-status";
+} from './academicSemester.constant';
+import ApiError from '../../../errors/ApiError';
+import httpStatus from 'http-status';
 
 const academicSemesterSchema = new Schema<IAcademicSemester>(
   {
@@ -32,7 +32,7 @@ const academicSemesterSchema = new Schema<IAcademicSemester>(
 );
 
 // handling same year and same semester issue
-academicSemesterSchema.pre("save", async function (next) {
+academicSemesterSchema.pre('save', async function (next) {
   const isExist = await AcademicSemester.findOne({
     title: this.title,
     year: this.year,
@@ -40,13 +40,13 @@ academicSemesterSchema.pre("save", async function (next) {
   if (isExist) {
     throw new ApiError(
       httpStatus.CONFLICT,
-      "Academic Semester is already exist !",
+      'Academic Semester is already exist !',
     );
   }
   next();
 });
 
 export const AcademicSemester = model<IAcademicSemester, AcademicSemesterModel>(
-  "AcademicSemester",
+  'AcademicSemester',
   academicSemesterSchema,
 );

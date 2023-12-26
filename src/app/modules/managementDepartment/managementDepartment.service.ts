@@ -1,15 +1,15 @@
-import { SortOrder } from "mongoose";
+import { SortOrder } from 'mongoose';
 
-import { IGenericResponse } from "../../../interfaces/common";
-import { IPaginationOptions } from "../../../interfaces/pagination";
-import { managementDepartmentSearchableFields } from "./managementDepartment.constant";
+import { IGenericResponse } from '../../../interfaces/common';
+import { IPaginationOptions } from '../../../interfaces/pagination';
+import { managementDepartmentSearchableFields } from './managementDepartment.constant';
 
-import { ManagementDepartment } from "./managementDepartment.model";
+import { ManagementDepartment } from './managementDepartment.model';
 import {
   IManagementDepartment,
   IManagementDepartmentFilters,
-} from "./managementDepartment.interface";
-import { PaginationHelpers } from "../../../helpers/paginationHelper";
+} from './managementDepartment.interface';
+import { PaginationHelpers } from '../../../helpers/paginationHelper';
 
 const createDepartment = async (
   payload: IManagementDepartment,
@@ -33,7 +33,7 @@ const getAllDepartments = async (
       $or: managementDepartmentSearchableFields.map(field => ({
         [field]: {
           $regex: searchTerm,
-          $options: "i",
+          $options: 'i',
         },
       })),
     });

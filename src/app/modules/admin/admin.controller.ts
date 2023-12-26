@@ -1,12 +1,12 @@
-import { Request, Response } from "express";
-import httpStatus from "http-status";
-import { paginationFields } from "../../../constants/pagination";
-import catchAsync from "../../../shared/catchAsync";
-import pick from "../../../shared/pick";
-import sendResponse from "../../../shared/sendResponse";
-import { adminFilterableFields } from "./admin.constant";
-import { IAdmin } from "./admin.interface";
-import { AdminService } from "./admin.service";
+import { Request, Response } from 'express';
+import httpStatus from 'http-status';
+import { paginationFields } from '../../../constants/pagination';
+import catchAsync from '../../../shared/catchAsync';
+import pick from '../../../shared/pick';
+import sendResponse from '../../../shared/sendResponse';
+import { adminFilterableFields } from './admin.constant';
+import { IAdmin } from './admin.interface';
+import { AdminService } from './admin.service';
 
 const getAllAdmins = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, adminFilterableFields);
@@ -17,7 +17,7 @@ const getAllAdmins = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IAdmin[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Admins retrieved successfully !",
+    message: 'Admins retrieved successfully !',
     meta: result.meta,
     data: result.data,
   });
@@ -30,7 +30,7 @@ const getSingleAdmin = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IAdmin>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Admin retrieved successfully !",
+    message: 'Admin retrieved successfully !',
     data: result,
   });
 });
@@ -44,7 +44,7 @@ const updateAdmin = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IAdmin>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Admin updated successfully !",
+    message: 'Admin updated successfully !',
     data: result,
   });
 });
@@ -56,7 +56,7 @@ const deleteAdmin = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IAdmin>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Admin deleted successfully !",
+    message: 'Admin deleted successfully !',
     data: result,
   });
 });

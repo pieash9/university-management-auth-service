@@ -1,13 +1,13 @@
-import { IPaginationOptions } from "../../../interfaces/pagination";
-import { PaginationHelpers } from "../../../helpers/paginationHelper";
-import { AcademicFaculty } from "./academicFaculty.model";
+import { IPaginationOptions } from '../../../interfaces/pagination';
+import { PaginationHelpers } from '../../../helpers/paginationHelper';
+import { AcademicFaculty } from './academicFaculty.model';
 import {
   IAcademicFaculty,
   IAcademicFacultyFilters,
-} from "./academicFaculty.interface";
-import { academicFacultySearchableFields } from "./academicFaculty.constant";
-import { IGenericResponse } from "../../../interfaces/common";
-import { SortOrder } from "mongoose";
+} from './academicFaculty.interface';
+import { academicFacultySearchableFields } from './academicFaculty.constant';
+import { IGenericResponse } from '../../../interfaces/common';
+import { SortOrder } from 'mongoose';
 
 const createFaculty = async (
   payload: IAcademicFaculty,
@@ -27,7 +27,7 @@ const getAllFaculties = async (
   if (searchTerm) {
     andConditions.push({
       $or: academicFacultySearchableFields.map(field => ({
-        [field]: { $regex: searchTerm, $options: "i" },
+        [field]: { $regex: searchTerm, $options: 'i' },
       })),
     });
   }

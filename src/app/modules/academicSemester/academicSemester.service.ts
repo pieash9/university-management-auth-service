@@ -1,24 +1,24 @@
-import httpStatus from "http-status";
-import ApiError from "../../../errors/ApiError";
+import httpStatus from 'http-status';
+import ApiError from '../../../errors/ApiError';
 import {
   academicSemesterSearchableFields,
   academicSemesterTitleCodeMapper,
-} from "./academicSemester.constant";
+} from './academicSemester.constant';
 import {
   IAcademicSemester,
   IAcademicSemesterFilters,
-} from "./academicSemester.interface";
-import { AcademicSemester } from "./academicSemester.model";
-import { IPaginationOptions } from "../../../interfaces/pagination";
-import { IGenericResponse } from "../../../interfaces/common";
-import { PaginationHelpers } from "../../../helpers/paginationHelper";
-import { SortOrder } from "mongoose";
+} from './academicSemester.interface';
+import { AcademicSemester } from './academicSemester.model';
+import { IPaginationOptions } from '../../../interfaces/pagination';
+import { IGenericResponse } from '../../../interfaces/common';
+import { PaginationHelpers } from '../../../helpers/paginationHelper';
+import { SortOrder } from 'mongoose';
 
 const createSemester = async (
   payload: IAcademicSemester,
 ): Promise<IAcademicSemester> => {
   if (academicSemesterTitleCodeMapper[payload.title] !== payload.code) {
-    throw new ApiError(httpStatus.BAD_REQUEST, "Invalid Semester code !");
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Semester code !');
   }
   const result = await AcademicSemester.create(payload);
   return result;
@@ -35,7 +35,7 @@ const getAllSemesters = async (
   if (searchTerm) {
     andConditions.push({
       $or: academicSemesterSearchableFields.map(field => ({
-        [field]: { $regex: searchTerm, $options: "i" },
+        [field]: { $regex: searchTerm, $options: 'i' },
       })),
     });
   }
@@ -104,7 +104,7 @@ const updateSemester = async (
     payload.code &&
     academicSemesterTitleCodeMapper[payload.title] !== payload.code
   ) {
-    throw new ApiError(httpStatus.BAD_REQUEST, "Invalid Semester code !");
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Semester code !');
   }
   const result = await AcademicSemester.findOneAndUpdate({ _id: id }, payload, {
     new: true,

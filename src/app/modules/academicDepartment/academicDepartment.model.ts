@@ -1,8 +1,8 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 import {
   AcademicDepartmentModel,
   IAcademicDepartment,
-} from "./academicDepartment.interface";
+} from './academicDepartment.interface';
 
 const AcademicDepartmentSchema = new Schema<
   IAcademicDepartment,
@@ -16,7 +16,7 @@ const AcademicDepartmentSchema = new Schema<
     },
     academicFaculty: {
       type: Schema.Types.ObjectId,
-      ref: "AcademicFaculty",
+      ref: 'AcademicFaculty',
       required: true,
     },
   },
@@ -31,4 +31,4 @@ const AcademicDepartmentSchema = new Schema<
 export const AcademicDepartment = model<
   IAcademicDepartment,
   AcademicDepartmentModel
->("AcademicDepartment", AcademicDepartmentSchema);
+>('AcademicDepartment', AcademicDepartmentSchema);

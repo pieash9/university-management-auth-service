@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-dgetAllFacultiesisable @typescript-eslint/no-explicit-any */
-import mongoose, { SortOrder } from "mongoose";
-import { IGenericResponse } from "../../../interfaces/common";
-import { IPaginationOptions } from "../../../interfaces/pagination";
-import httpStatus from "http-status";
-import ApiError from "../../../errors/ApiError";
-import { User } from "../user/user.model";
-import { facultySearchableFields } from "./faculty.constant";
-import { IFaculty, IFacultyFilters } from "./faculty.interface";
-import { Faculty } from "./faculty.model";
-import { PaginationHelpers } from "../../../helpers/paginationHelper";
+import mongoose, { SortOrder } from 'mongoose';
+import { IGenericResponse } from '../../../interfaces/common';
+import { IPaginationOptions } from '../../../interfaces/pagination';
+import httpStatus from 'http-status';
+import ApiError from '../../../errors/ApiError';
+import { User } from '../user/user.model';
+import { facultySearchableFields } from './faculty.constant';
+import { IFaculty, IFacultyFilters } from './faculty.interface';
+import { Faculty } from './faculty.model';
+import { PaginationHelpers } from '../../../helpers/paginationHelper';
 
 const getAllFaculties = async (
   filters: IFacultyFilters,
@@ -25,7 +25,7 @@ const getAllFaculties = async (
       $or: facultySearchableFields.map(field => ({
         [field]: {
           $regex: searchTerm,
-          $options: "i",
+          $options: 'i',
         },
       })),
     });
@@ -48,8 +48,8 @@ const getAllFaculties = async (
     andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await Faculty.find(whereConditions)
-    .populate("academicDepartment")
-    .populate("academicFaculty")
+    .populate('academicDepartment')
+    .populate('academicFaculty')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
@@ -68,8 +68,8 @@ const getAllFaculties = async (
 
 const getSingleFaculty = async (id: string): Promise<IFaculty | null> => {
   const result = await Faculty.findOne({ id })
-    .populate("academicDepartment")
-    .populate("academicFaculty");
+    .populate('academicDepartment')
+    .populate('academicFaculty');
 
   return result;
 };
@@ -81,7 +81,7 @@ const updateFaculty = async (
   const isExist = await Faculty.findOne({ id });
 
   if (!isExist) {
-    throw new ApiError(httpStatus.NOT_FOUND, "Faculty not found !");
+    throw new ApiError(httpStatus.NOT_FOUND, 'Faculty not found !');
   }
 
   const { name, ...FacultyData } = payload;
@@ -105,7 +105,7 @@ const deleteFaculty = async (id: string): Promise<IFaculty | null> => {
   const isExist = await Faculty.findOne({ id });
 
   if (!isExist) {
-    throw new ApiError(httpStatus.NOT_FOUND, "Faculty not found !");
+    throw new ApiError(httpStatus.NOT_FOUND, 'Faculty not found !');
   }
 
   const session = await mongoose.startSession();
@@ -115,7 +115,7 @@ const deleteFaculty = async (id: string): Promise<IFaculty | null> => {
     //delete faculty first
     const faculty = await Faculty.findOneAndDelete({ id }, { session });
     if (!faculty) {
-      throw new ApiError(404, "Failed to delete student");
+      throw new ApiError(404, 'Failed to delete student');
     }
     //delete user
     await User.deleteOne({ id });

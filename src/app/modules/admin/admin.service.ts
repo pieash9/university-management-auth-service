@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import httpStatus from "http-status";
-import mongoose, { SortOrder } from "mongoose";
-import ApiError from "../../../errors/ApiError";
-import { IGenericResponse } from "../../../interfaces/common";
-import { IPaginationOptions } from "../../../interfaces/pagination";
-import { User } from "../user/user.model";
-import { adminSearchableFields } from "./admin.constant";
-import { IAdmin, IAdminFilters } from "./admin.interface";
-import { Admin } from "./admin.model";
-import { PaginationHelpers } from "../../../helpers/paginationHelper";
+import httpStatus from 'http-status';
+import mongoose, { SortOrder } from 'mongoose';
+import ApiError from '../../../errors/ApiError';
+import { IGenericResponse } from '../../../interfaces/common';
+import { IPaginationOptions } from '../../../interfaces/pagination';
+import { User } from '../user/user.model';
+import { adminSearchableFields } from './admin.constant';
+import { IAdmin, IAdminFilters } from './admin.interface';
+import { Admin } from './admin.model';
+import { PaginationHelpers } from '../../../helpers/paginationHelper';
 
 const getAllAdmins = async (
   filters: IAdminFilters,
@@ -25,7 +25,7 @@ const getAllAdmins = async (
       $or: adminSearchableFields.map(field => ({
         [field]: {
           $regex: searchTerm,
-          $options: "i",
+          $options: 'i',
         },
       })),
     });
@@ -48,7 +48,7 @@ const getAllAdmins = async (
     andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await Admin.find(whereConditions)
-    .populate("managementDepartment")
+    .populate('managementDepartment')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
@@ -66,7 +66,7 @@ const getAllAdmins = async (
 };
 
 const getSingleAdmin = async (id: string): Promise<IAdmin | null> => {
-  const result = await Admin.findOne({ id }).populate("ManagementDepartment");
+  const result = await Admin.findOne({ id }).populate('ManagementDepartment');
   return result;
 };
 
@@ -77,7 +77,7 @@ const updateAdmin = async (
   const isExist = await Admin.findOne({ id });
 
   if (!isExist) {
-    throw new ApiError(httpStatus.NOT_FOUND, "Admin not found !");
+    throw new ApiError(httpStatus.NOT_FOUND, 'Admin not found !');
   }
 
   const { name, ...adminData } = payload;
@@ -102,7 +102,7 @@ const deleteAdmin = async (id: string): Promise<IAdmin | null> => {
   const isExist = await Admin.findOne({ id });
 
   if (!isExist) {
-    throw new ApiError(httpStatus.NOT_FOUND, "Faculty not found !");
+    throw new ApiError(httpStatus.NOT_FOUND, 'Faculty not found !');
   }
 
   const session = await mongoose.startSession();
@@ -112,7 +112,7 @@ const deleteAdmin = async (id: string): Promise<IAdmin | null> => {
     //delete student first
     const student = await Admin.findOneAndDelete({ id }, { session });
     if (!student) {
-      throw new ApiError(404, "Failed to delete student");
+      throw new ApiError(404, 'Failed to delete student');
     }
     //delete user
     await User.deleteOne({ id });

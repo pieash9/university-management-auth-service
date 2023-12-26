@@ -1,11 +1,11 @@
-import mongoose from "mongoose";
-import app from "./app";
+import mongoose from 'mongoose';
+import app from './app';
 
-import config from "./config/index";
-import { logger, errorLogger } from "./shared/logger";
-import { Server } from "http";
+import config from './config/index';
+import { logger, errorLogger } from './shared/logger';
+import { Server } from 'http';
 
-process.on("uncaughtException", error => {
+process.on('uncaughtException', error => {
   console.log(error);
   process.exit(1);
 });
@@ -19,10 +19,10 @@ async function bootstrap() {
       console.log(`🛢 DB connected & listening on ${config.port}`);
     });
   } catch (err) {
-    console.log("Failed to connect database", err);
+    console.log('Failed to connect database', err);
   }
 
-  process.on("unhandledRejection", error => {
+  process.on('unhandledRejection', error => {
     if (server) {
       server.close(() => {
         console.log(error);
@@ -35,8 +35,8 @@ async function bootstrap() {
 
 bootstrap();
 
-process.on("SIGTERM", () => {
-  console.log("SIGTERM received");
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received');
   if (server) {
     server.close();
   }

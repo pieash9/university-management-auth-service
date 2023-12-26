@@ -1,20 +1,20 @@
-import { IPaginationOptions } from "../../../interfaces/pagination";
-import { PaginationHelpers } from "../../../helpers/paginationHelper";
+import { IPaginationOptions } from '../../../interfaces/pagination';
+import { PaginationHelpers } from '../../../helpers/paginationHelper';
 
-import { IGenericResponse } from "../../../interfaces/common";
-import { SortOrder } from "mongoose";
+import { IGenericResponse } from '../../../interfaces/common';
+import { SortOrder } from 'mongoose';
 import {
   IAcademicDepartment,
   IAcademicDepartmentFilters,
-} from "./academicDepartment.interface";
-import { AcademicDepartment } from "./academicDepartment.model";
-import { academicDepartmentSearchableFields } from "./academicDepartment.constant";
+} from './academicDepartment.interface';
+import { AcademicDepartment } from './academicDepartment.model';
+import { academicDepartmentSearchableFields } from './academicDepartment.constant';
 
 const createDepartment = async (
   payload: IAcademicDepartment,
 ): Promise<IAcademicDepartment | null> => {
   const result = (await AcademicDepartment.create(payload)).populate(
-    "academicFaculty",
+    'academicFaculty',
   );
   return result;
 };
@@ -30,7 +30,7 @@ const getAllDepartments = async (
   if (searchTerm) {
     andConditions.push({
       $or: academicDepartmentSearchableFields.map(field => ({
-        [field]: { $regex: searchTerm, $options: "i" },
+        [field]: { $regex: searchTerm, $options: 'i' },
       })),
     });
   }
@@ -56,7 +56,7 @@ const getAllDepartments = async (
     andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await AcademicDepartment.find(whereConditions)
-    .populate("academicFaculty")
+    .populate('academicFaculty')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
@@ -76,7 +76,7 @@ const getSingleDepartment = async (
   id: string,
 ): Promise<IAcademicDepartment | null> => {
   const result =
-    await AcademicDepartment.findById(id).populate("academicFaculty");
+    await AcademicDepartment.findById(id).populate('academicFaculty');
   return result;
 };
 
@@ -90,7 +90,7 @@ const updateDepartment = async (
     {
       new: true,
     },
-  ).populate("academicFaculty");
+  ).populate('academicFaculty');
   return result;
 };
 

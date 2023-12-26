@@ -1,12 +1,12 @@
-import { Request, Response } from "express";
-import catchAsync from "../../../shared/catchAsync";
-import sendResponse from "../../../shared/sendResponse";
-import httpStatus from "http-status";
-import pick from "../../../shared/pick";
-import { paginationFields } from "../../../constants/pagination";
-import { studentFilterableFields } from "./student.constant";
-import { IStudent } from "./student.interface";
-import { StudentService } from "./student.service";
+import { Request, Response } from 'express';
+import catchAsync from '../../../shared/catchAsync';
+import sendResponse from '../../../shared/sendResponse';
+import httpStatus from 'http-status';
+import pick from '../../../shared/pick';
+import { paginationFields } from '../../../constants/pagination';
+import { studentFilterableFields } from './student.constant';
+import { IStudent } from './student.interface';
+import { StudentService } from './student.service';
 
 const getAllStudents = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, studentFilterableFields);
@@ -20,7 +20,7 @@ const getAllStudents = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IStudent[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Students retrieved successfully",
+    message: 'Students retrieved successfully',
     meta: result.meta,
     data: result.data,
   });
@@ -34,7 +34,7 @@ const getSingleStudent = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IStudent>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Student retrieved successfully",
+    message: 'Student retrieved successfully',
     data: result,
   });
 });
@@ -48,7 +48,7 @@ const updateStudent = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IStudent>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Students updated successfully",
+    message: 'Students updated successfully',
     data: result,
   });
 });
@@ -61,7 +61,7 @@ const deleteStudent = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IStudent>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Students deleted successfully",
+    message: 'Students deleted successfully',
     data: result,
   });
 });

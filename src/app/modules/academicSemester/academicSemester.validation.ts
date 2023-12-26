@@ -1,24 +1,24 @@
-import { z } from "zod";
+import { z } from 'zod';
 import {
   academicSemesterCodes,
   academicSemesterMonths,
   academicSemesterTitles,
-} from "./academicSemester.constant";
+} from './academicSemester.constant';
 
 const createAcademicSemesterZodSchema = z.object({
   body: z.object({
     title: z.enum([...academicSemesterTitles] as [string, ...string[]], {
-      required_error: "Title is required !",
+      required_error: 'Title is required !',
     }),
-    year: z.string({ required_error: "Year is required !" }),
+    year: z.string({ required_error: 'Year is required !' }),
     code: z.enum([...academicSemesterCodes] as [string, ...string[]], {
-      required_error: "Code is required !",
+      required_error: 'Code is required !',
     }),
     startMonth: z.enum([...academicSemesterMonths] as [string, ...string[]], {
-      required_error: "Start month is required !",
+      required_error: 'Start month is required !',
     }),
     endMonth: z.enum([...academicSemesterMonths] as [string, ...string[]], {
-      required_error: "End month is required !",
+      required_error: 'End month is required !',
     }),
   }),
 });
@@ -28,23 +28,23 @@ const updateAcademicSemesterZodSchema = z
     body: z.object({
       title: z
         .enum([...academicSemesterTitles] as [string, ...string[]], {
-          required_error: "Title is required !",
+          required_error: 'Title is required !',
         })
         .optional(),
-      year: z.string({ required_error: "Year is required !" }).optional(),
+      year: z.string({ required_error: 'Year is required !' }).optional(),
       code: z
         .enum([...academicSemesterCodes] as [string, ...string[]], {
-          required_error: "Code is required !",
+          required_error: 'Code is required !',
         })
         .optional(),
       startMonth: z
         .enum([...academicSemesterMonths] as [string, ...string[]], {
-          required_error: "Start month is required !",
+          required_error: 'Start month is required !',
         })
         .optional(),
       endMonth: z
         .enum([...academicSemesterMonths] as [string, ...string[]], {
-          required_error: "End month is required !",
+          required_error: 'End month is required !',
         })
         .optional(),
     }),
@@ -53,7 +53,7 @@ const updateAcademicSemesterZodSchema = z
     data =>
       (data.body.title && data.body.code) ||
       (!data.body.title && !data.body.code),
-    { message: "Either both title and code should be provided or neither" },
+    { message: 'Either both title and code should be provided or neither' },
   );
 
 export const AcademicSemesterValidation = {
