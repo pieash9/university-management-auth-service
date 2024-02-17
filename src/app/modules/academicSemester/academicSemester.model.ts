@@ -14,7 +14,7 @@ import httpStatus from 'http-status';
 const academicSemesterSchema = new Schema<IAcademicSemester>(
   {
     title: { type: String, required: true, enum: academicSemesterTitles },
-    year: { type: String, required: true },
+    year: { type: Number, required: true },
     code: { type: String, required: true, enum: academicSemesterCodes },
     startMonth: {
       type: String,
@@ -22,6 +22,10 @@ const academicSemesterSchema = new Schema<IAcademicSemester>(
       enum: academicSemesterMonths,
     },
     endMonth: { type: String, required: true, enum: academicSemesterMonths },
+    syncId: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
