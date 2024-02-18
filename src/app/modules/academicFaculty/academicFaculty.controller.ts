@@ -4,9 +4,9 @@ import httpStatus from 'http-status';
 import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
 import { AcademicFacultyService } from './academicFaculty.service';
-import { IAcademicFaculty } from './academicFaculty.interface';
+import { IAcademicFaculty } from './academicFaculty.interfaces';
 import { paginationFields } from '../../../constants/pagination';
-import { academicFacultyFilterableFields } from './academicFaculty.constant';
+import { academicFacultyFilterableFields } from './academicFaculty.constants';
 
 const createFaculty = catchAsync(async (req: Request, res: Response) => {
   const { ...academicFacultyData } = req.body;
@@ -69,7 +69,7 @@ const updateFaculty = catchAsync(async (req: Request, res: Response) => {
 const deleteFaculty = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
 
-  const result = await AcademicFacultyService.deleteFaculty(id);
+  const result = await AcademicFacultyService.deleteByIdFromDB(id);
 
   sendResponse<IAcademicFaculty>(res, {
     statusCode: httpStatus.OK,
