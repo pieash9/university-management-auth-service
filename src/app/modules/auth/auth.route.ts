@@ -1,10 +1,9 @@
 import express from 'express';
-import validateRequest from '../../middlewares/validateRequest';
-import { AuthValidation } from './auth.validation';
-import { AuthController } from './auth.controller';
-import auth from '../../middlewares/auth';
 import { ENUM_USER_ROLE } from '../../../enums/user';
-
+import auth from '../../middlewares/auth';
+import validateRequest from '../../middlewares/validateRequest';
+import { AuthController } from './auth.controller';
+import { AuthValidation } from './auth.validation';
 const router = express.Router();
 
 router.post(
@@ -12,11 +11,13 @@ router.post(
   validateRequest(AuthValidation.loginZodSchema),
   AuthController.loginUser,
 );
+
 router.post(
   '/refresh-token',
   validateRequest(AuthValidation.refreshTokenZodSchema),
   AuthController.refreshToken,
 );
+
 router.post(
   '/change-password',
   validateRequest(AuthValidation.changePasswordZodSchema),
@@ -28,15 +29,8 @@ router.post(
   ),
   AuthController.changePassword,
 );
+router.post('/forgot-password', AuthController.forgotPass);
 
-// router.get("/", AdminController.getAllAdmins);
-
-// router.delete("/:id", AdminController.deleteAdmin);
-
-// router.patch(
-//   "/:id",
-//   validateRequest(AdminValidation.updateAdmin),
-//   AdminController.updateAdmin,
-// );
+router.post('/reset-password', AuthController.resetPassword);
 
 export const AuthRoutes = router;

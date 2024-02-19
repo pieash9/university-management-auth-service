@@ -5,9 +5,8 @@ import catchAsync from '../../../shared/catchAsync';
 import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
 import { managementDepartmentFilterableFields } from './managementDepartment.constant';
-
+import { IManagementDepartment } from './managementDepartment.inerface';
 import { ManagementDepartmentService } from './managementDepartment.service';
-import { IManagementDepartment } from './managementDepartment.interface';
 
 const createDepartment = catchAsync(async (req: Request, res: Response) => {
   const { ...departmentData } = req.body;
@@ -34,7 +33,7 @@ const getAllDepartments = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IManagementDepartment[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Management departments retrieved successfully',
+    message: 'Management departments fetched successfully',
     meta: result.meta,
     data: result.data,
   });
@@ -47,7 +46,7 @@ const getSingleDepartment = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IManagementDepartment>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Management department retieved successfully',
+    message: 'Management department fetched successfully',
     data: result,
   });
 });

@@ -1,12 +1,25 @@
 import { Request, Response } from 'express';
-import catchAsync from '../../../shared/catchAsync';
-import sendResponse from '../../../shared/sendResponse';
 import httpStatus from 'http-status';
-import pick from '../../../shared/pick';
 import { paginationFields } from '../../../constants/pagination';
+import catchAsync from '../../../shared/catchAsync';
+import pick from '../../../shared/pick';
+import sendResponse from '../../../shared/sendResponse';
 import { studentFilterableFields } from './student.constant';
 import { IStudent } from './student.interface';
 import { StudentService } from './student.service';
+
+const getSingleStudent = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  const result = await StudentService.getSingleStudent(id);
+
+  sendResponse<IStudent>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Student fetched successfully !',
+    data: result,
+  });
+});
 
 const getAllStudents = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, studentFilterableFields);
@@ -20,22 +33,9 @@ const getAllStudents = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IStudent[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Students retrieved successfully',
+    message: 'Students fetched successfully !',
     meta: result.meta,
     data: result.data,
-  });
-});
-
-const getSingleStudent = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
-
-  const result = await StudentService.getSingleStudent(id);
-
-  sendResponse<IStudent>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Student retrieved successfully',
-    data: result,
   });
 });
 
@@ -48,11 +48,10 @@ const updateStudent = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IStudent>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Students updated successfully',
+    message: 'Student updated successfully !',
     data: result,
   });
 });
-
 const deleteStudent = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
 
@@ -61,14 +60,14 @@ const deleteStudent = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IStudent>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Students deleted successfully',
+    message: 'Student deleted successfully !',
     data: result,
   });
 });
 
 export const StudentController = {
-  getAllStudents,
   getSingleStudent,
+  getAllStudents,
   updateStudent,
   deleteStudent,
 };

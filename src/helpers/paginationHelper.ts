@@ -23,7 +23,15 @@ const calculatePagination = (options: IOptions): IOptionsResult => {
   const sortBy = options.sortBy || 'createdAt';
   const sortOrder = options.sortOrder || 'desc';
 
-  return { page, limit, skip, sortBy, sortOrder };
+  return {
+    page,
+    limit,
+    skip,
+    sortBy,
+    sortOrder,
+  };
 };
 
-export const PaginationHelpers = { calculatePagination };
+export const paginationHelpers = {
+  calculatePagination,
+};

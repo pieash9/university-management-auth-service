@@ -1,5 +1,5 @@
 import { Model, Types } from 'mongoose';
-import { IAcademicDepartment } from '../academicDepartment/academicDepartment.interface';
+import { IAcademicDepartment } from '../academicDepartment/academicDepartment.interfaces';
 import { IAcademicFaculty } from '../academicFaculty/academicFaculty.interfaces';
 
 export type UserName = {
@@ -20,6 +20,7 @@ export type IFaculty = {
   permanentAddress?: string;
   presentAddress?: string;
   bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
+
   academicDepartment: Types.ObjectId | IAcademicDepartment;
   academicFaculty: Types.ObjectId | IAcademicFaculty;
   designation: string;

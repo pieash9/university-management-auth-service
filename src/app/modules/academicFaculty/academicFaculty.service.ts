@@ -1,5 +1,5 @@
 import { SortOrder } from 'mongoose';
-
+import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import { academicFacultySearchableFields } from './academicFaculty.constants';
@@ -10,7 +10,6 @@ import {
   IAcademicFacultyFilters,
 } from './academicFaculty.interfaces';
 import { AcademicFaculty } from './academicFaculty.model';
-import { PaginationHelpers } from '../../../helpers/paginationHelper';
 
 const createFaculty = async (payload: IAcademicFaculty) => {
   const result = await AcademicFaculty.create(payload);
@@ -32,7 +31,7 @@ const getAllFaculties = async (
   const { searchTerm, ...filtersData } = filters;
 
   const { page, limit, skip, sortBy, sortOrder } =
-    PaginationHelpers.calculatePagination(paginationOptions);
+    paginationHelpers.calculatePagination(paginationOptions);
 
   const andConditions = [];
 
@@ -49,6 +48,7 @@ const getAllFaculties = async (
   }
 
   // Filters needs $and to fullfill all the conditions
+  console.log(filtersData);
   if (Object.keys(filtersData).length) {
     andConditions.push({
       $and: Object.entries(filtersData).map(([field, value]) => ({

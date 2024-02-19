@@ -3,12 +3,12 @@ import {
   EVENT_ACADEMIC_DEPARTMENT_CREATED,
   EVENT_ACADEMIC_DEPARTMENT_DELETED,
   EVENT_ACADEMIC_DEPARTMENT_UPDATED,
-} from './academicDepartment.constant';
+} from './academicDepartment.constants';
 import {
   AcademicDepartmentCreatedEvent,
   AcademicDepartmentDeletedEvent,
   AcademicDepartmentUpdatedEvent,
-} from './academicDepartment.interface';
+} from './academicDepartment.interfaces';
 import { AcademicDepartmentService } from './academicDepartment.service';
 
 const initAcademicDepartmentEvents = () => {

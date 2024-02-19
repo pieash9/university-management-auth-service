@@ -1,10 +1,13 @@
 export const facultyFilterableFields = [
   'searchTerm',
   'id',
+  'gender',
   'bloodGroup',
   'email',
   'contactNo',
   'emergencyContactNo',
+  'academicFaculty',
+  'academicDepartment',
   'designation',
 ];
 
@@ -16,3 +19,5 @@ export const facultySearchableFields = [
   'name.lastName',
   'name.middleName',
 ];
+
+export const EVENT_FACULTY_UPDATED = 'faculty.updated';

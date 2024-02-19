@@ -1,11 +1,10 @@
+/* eslint-disable no-console */
+import { Server } from 'http';
 import mongoose from 'mongoose';
 import app from './app';
-
-import config from './config/index';
-import { logger, errorLogger } from './shared/logger';
-import { Server } from 'http';
-import { RedisClient } from './shared/redis';
 import subscribeToEvents from './app/events';
+import config from './config/index';
+import { RedisClient } from './shared/redis';
 
 process.on('uncaughtException', error => {
   console.log(error);
@@ -21,8 +20,12 @@ async function bootstrap() {
     });
 
     await mongoose.connect(config.database_url as string);
+    // logger.info(`🛢   Database is connected successfully`);
+    console.log(`🛢   Database is connected successfully`);
+
     server = app.listen(config.port, () => {
-      console.log(`🛢 DB connected & listening on ${config.port}`);
+      // logger.info(`Application  listening on port ${config.port}`);
+      console.log(`Application  listening on port ${config.port}`);
     });
   } catch (err) {
     console.log('Failed to connect database', err);
@@ -32,6 +35,7 @@ async function bootstrap() {
     if (server) {
       server.close(() => {
         console.log(error);
+        process.exit(1);
       });
     } else {
       process.exit(1);
@@ -41,9 +45,9 @@ async function bootstrap() {
 
 bootstrap();
 
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received');
-  if (server) {
-    server.close();
-  }
-});
+// process.on('SIGTERM', () => {
+//   logger.info('SIGTERM is received');
+//   if (server) {
+//     server.close();
+//   }
+// });

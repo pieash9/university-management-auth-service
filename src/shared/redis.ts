@@ -13,8 +13,8 @@ const redisSubClient = createClient({
   url: config.redis.url,
 });
 
-redisClient.on('error', error => console.log('Error Redis', error));
-redisClient.on('connect', () => console.log('Redis Connected'));
+redisClient.on('error', error => console.log('RedisError', error));
+redisClient.on('connect', error => console.log('Redis Connected'));
 
 const connect = async (): Promise<void> => {
   await redisClient.connect();
@@ -37,11 +37,6 @@ const get = async (key: string): Promise<string | null> => {
 const del = async (key: string): Promise<void> => {
   await redisClient.del(key);
 };
-const disconnect = async (): Promise<void> => {
-  await redisClient.quit();
-  await redisPubClient.quit();
-  await redisSubClient.quit();
-};
 
 const setAccessToken = async (userId: string, token: string): Promise<void> => {
   const key = `access-token:${userId}`;
@@ -53,9 +48,15 @@ const getAccessToken = async (userId: string): Promise<string | null> => {
   return await redisClient.get(key);
 };
 
-const deleteAccessToken = async (userId: string): Promise<void> => {
+const delAccessToken = async (userId: string): Promise<void> => {
   const key = `access-token:${userId}`;
   await redisClient.del(key);
+};
+
+const disconnect = async (): Promise<void> => {
+  await redisClient.quit();
+  await redisPubClient.quit();
+  await redisSubClient.quit();
 };
 
 export const RedisClient = {
@@ -63,10 +64,10 @@ export const RedisClient = {
   set,
   get,
   del,
-  disconnect,
   setAccessToken,
   getAccessToken,
-  deleteAccessToken,
+  delAccessToken,
+  disconnect,
   publish: redisPubClient.publish.bind(redisPubClient),
   subscribe: redisSubClient.subscribe.bind(redisSubClient),
 };
